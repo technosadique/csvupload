@@ -1,5 +1,5 @@
 <?php
-
+ 
 function get_all_records(){ 
 include "db.php";  
 
@@ -11,6 +11,7 @@ include "db.php";
      echo "<div class='table-responsive'>
 	       <table id='myTable' class='table table-striped table-bordered'>
              <thead><tr>
+						<th>ID</th>
 						<th>First Name</th>
 						<th>Last Name</th>
 						<th>Email</th>                          
@@ -22,6 +23,7 @@ include "db.php";
      while($row = mysqli_fetch_assoc($result)) {
 
          echo "<tr>
+                   <td>" . $row['id']."</td>
                    <td>" . $row['firstname']."</td>
                    <td>" . $row['lastname']."</td>
                    <td>" . $row['email']."</td>
@@ -36,7 +38,7 @@ include "db.php";
 }
 
  if(isset($_POST["Export"])){
-		 
+	  include "db.php";
       header('Content-Type: text/csv; charset=utf-8');  
       header('Content-Disposition: attachment; filename=data.csv');  
       $output = fopen("php://output", "w");  
